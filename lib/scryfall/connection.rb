@@ -4,7 +4,6 @@ module Scryfall
     include HTTParty
     
     DEFAULT_VERSION = "v1"
-  
     DEFAULT_API_BASE_URI = "https://api.scryfall.com"
 
     def initialize(version: DEFAULT_VERSION, api_base_uri: DEFAULT_API_BASE_URI)
@@ -14,19 +13,19 @@ module Scryfall
       Scryfall::Connection.base_uri @api_base_uri
     end
 
-    def get(path, params = {}, headers=nil, body=nil)
-      request :get, path, params, headers, body
+    def get(path, req)
+      request :get, path, req
     end
 
-    def post(path, params = {}, headers=nil, body=nil)
-      request :post, path, params, headers, body
+    def post(path, req)
+      request :post, path, req
     end
 
-    def request(verb, path, params = {}, headers=nil, body=nil)
-      raise ArgumentError.new "Invalid HTTP verb #{verb}" if ![:get, :post].include?(verb)
+    def request(verb, path, req)
+      raise ArgumentError.new "Invalid HTTP verb #{verb}" unless [:get, :post].include?(verb)
 
       response = begin
-        self.class.public_send verb, path, query: params, headers: headers, body: body # debug_output: $stdout
+        self.class.public_send verb, path, query: req.params, headers: req.headers, body: req.body # debug_output: $stdout
       end
 
       status = response.respond_to?(:status) ? response.status : response.code

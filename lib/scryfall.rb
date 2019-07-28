@@ -2,6 +2,7 @@ require "oauth2"
 require "delegate"
 require "httparty"
 
+require "request/request"
 require "scryfall/configuration"
 require "scryfall/client"
 require "scryfall/connection"

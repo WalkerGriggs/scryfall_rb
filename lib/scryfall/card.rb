@@ -35,7 +35,11 @@ module Scryfall
             pretty: pretty
         }
 
-        Scryfall::Search.search("/cards/search", self, params)
+        req = Request.new(params = params,
+                          headers = nil,
+                          body = nil)
+
+        Scryfall::Search.get("/cards/search", self, req)
       end
 
       # Returns a Card based on a name search string.
@@ -60,7 +64,11 @@ module Scryfall
             pretty: pretty
         }
 
-        Scryfall::Card.new JSON.parse(connection.get("/cards/named", params).body)
+        req = Request.new(params = params,
+                          headers = nil,
+                          body = nil)
+
+        Scryfall::Card.new JSON.parse(connection.get("/cards/named", req).body)
       end
 
       # Returns a single, random Card object.
@@ -83,8 +91,11 @@ module Scryfall
             pretty: pretty
         }
 
-        json =  JSON.parse(connection.get("/cards/random", params).body)
-        Scryfall::Card.new json
+        req = Request.new(params = params,
+                          headers = nil,
+                          body = nil)
+
+        Scryfall::Card.new JSON.parse(connection.get("/cards/random", req).body)
       end
 
       # Accepts a JSON array of card identifiers, and returns a List object with the collection of requested cards.
@@ -94,7 +105,11 @@ module Scryfall
       # @param identifiers [Array] An array of JSON objects, each one a card identifier.
       # @param pretty  [Boolean] If true, the returend JSON will be prettified. Avoid using for production code.
       def collection(identifiers, pretty: false)
-        Scryfall::Search.post("/cards/collection", self, nil, headers={'Content-Type' => 'application/json'}, body=identifiers)
+        req = Request.new(params = nil,
+                          headers = {'Content-Type' => 'application/json'},
+                          body = identifiers)
+
+        Scryfall::Search.post("/cards/collection", self, req)
       end
 
       # Returns a single card with the given Scryfall ID.
@@ -103,7 +118,11 @@ module Scryfall
       # @param id [String] ID of the card to retrieve
       # @return [Scryfall::Card] the card
       def by_id(id)
-        Scryfall::Card.new JSON.parse(connection.get("/cards/#{id}").body)
+        req = Request.new(params = nil,
+                          headers = nil,
+                          body = nil)
+
+        Scryfall::Card.new JSON.parse(connection.get("/cards/#{id}", req).body)
       end
     end
   end
