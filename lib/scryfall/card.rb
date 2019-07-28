@@ -38,15 +38,6 @@ module Scryfall
         Scryfall::Search.search("/cards/search", self, params)
       end
 
-      # Returns a single card with the given Scryfall ID.
-      # https://scryfall.com/docs/api/cards/id
-      #
-      # @param id [String] ID of the card to retrieve
-      # @return [Scryfall::Card] the card
-      def by_id(id)
-        Scryfall::Card.new JSON.parse(connection.get("/cards/#{id}").body)
-      end
-
       # Returns a Card based on a name search string.
       # https://scryfall.com/docs/api/cards/named
       #
@@ -94,6 +85,25 @@ module Scryfall
 
         json =  JSON.parse(connection.get("/cards/random", params).body)
         Scryfall::Card.new json
+      end
+
+      # Accepts a JSON array of card identifiers, and returns a List object with the collection of requested cards.
+      # A maximum of 75 card references may be submitted per request.
+      # https://scryfall.com/docs/api/cards/collection
+      #
+      # @param identifiers [Array] An array of JSON objects, each one a card identifier.
+      # @param pretty  [Boolean] If true, the returend JSON will be prettified. Avoid using for production code.
+      def collection(identifiers, pretty: false)
+        Scryfall::Search.post("/cards/collection", self, nil, headers={'Content-Type' => 'application/json'}, body=identifiers)
+      end
+
+      # Returns a single card with the given Scryfall ID.
+      # https://scryfall.com/docs/api/cards/id
+      #
+      # @param id [String] ID of the card to retrieve
+      # @return [Scryfall::Card] the card
+      def by_id(id)
+        Scryfall::Card.new JSON.parse(connection.get("/cards/#{id}").body)
       end
     end
   end

@@ -21,9 +21,13 @@ module Scryfall
 
     class << self
 
-      def search(url, klass, params)
-        data = JSON.parse(connection.get(url, params).body)
-        p data
+      def get(url, klass, params)
+        data = JSON.parse(connection.post(url, params).body)
+        List.new(data, klass)
+      end
+
+      def post(url, klass, params, headers=nil, body=nil)
+        data = JSON.parse(connection.post(url, params, headers, body).body)
         List.new(data, klass)
       end
     end
