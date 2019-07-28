@@ -1,5 +1,4 @@
-.. image:: https://raw.githubusercontent.com/WalkerGriggs/scryfall_rb/feature/readme/assets/scryfall_rb.png
-
+<img alt="# scryfall_rb" src="./assets/scryfall_rb.png" width="50%">
 scryfall_rb is an open source Ruby client library for Scryfall's API
 
 Features
