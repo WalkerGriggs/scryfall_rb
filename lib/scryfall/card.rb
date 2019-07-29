@@ -54,7 +54,7 @@ module Scryfall
       # @param version [String] The image version to return when using the 'image' format (small, normal, large, png,
       #                         art_crop, or border_crop)
       # @param pretty [Boolean] If true, the returned JSON will be prettified. Avoid using for production code.
-      def named(name: nil, mode: "exact", set: nil, format: "json", face: nil, version: "large", pretty: false)
+      def named(name, mode: "exact", set: nil, format: "json", face: nil, version: "large", pretty: false)
         params = {
             mode => name,
             set: set,

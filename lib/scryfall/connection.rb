@@ -30,6 +30,8 @@ module Scryfall
 
       status = response.respond_to?(:status) ? response.status : response.code
       case status
+      when 200..299
+        response
       when 404
         raise Scryfall::NotFoundError.new(error_details(response))
       else
