@@ -4,6 +4,7 @@ require "httparty"
 
 require "request/request"
 require "scryfall/configuration"
+require "scryfall/errors"
 require "scryfall/client"
 require "scryfall/connection"
 require "scryfall/card"

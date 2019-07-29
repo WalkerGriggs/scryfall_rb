@@ -29,7 +29,18 @@ module Scryfall
       end
 
       status = response.respond_to?(:status) ? response.status : response.code
+      case status
+      when 404
+        raise Scryfall::NotFoundError.new(error_details(response))
+      else
+        raise Scryfall::Error.new(error_details(response))
+      end
+
       response
+    end
+
+    def error_details(response)
+      JSON.parse(response.body)["details"]
     end
   end
 end
