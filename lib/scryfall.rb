@@ -1,4 +1,3 @@
-require "oauth2"
 require "delegate"
 require "httparty"
 
@@ -8,6 +7,7 @@ require "scryfall/errors"
 require "scryfall/client"
 require "scryfall/connection"
 require "scryfall/card"
+require "scryfall/catalog"
 require "scryfall/list"
 
 module Scryfall

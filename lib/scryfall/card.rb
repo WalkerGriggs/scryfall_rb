@@ -71,6 +71,22 @@ module Scryfall
         Scryfall::Card.new JSON.parse(connection.get("/cards/named", req).body)
       end
 
+      # Returns a Catalog object container up to 20 full English card names that could be auto-completions of the given
+      # string parameter
+      # https://scryfall.com/docs/api/cards/autocomplete
+      #
+      # @param q       [String] The string to autocomplete
+      # @param format  [String] The data format to return. This method only supports json.
+      # @param pretty  [Boolean] If true, the returned JSON will be prettified. Avoid using for production code.
+      def autocomplete(q, format: "json", pretty: false)
+        req = Request.new(
+                         params = {q: q},
+                         headers = nil,
+                         body = nil)
+
+        Scryfall::Catalog.new JSON.parse(connection.get("/cards/autocomplete", req).body)
+      end
+
       # Returns a single, random Card object.
       # https://scryfall.com/docs/api/cards/random
       #
