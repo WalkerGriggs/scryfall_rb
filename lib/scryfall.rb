@@ -2,6 +2,7 @@ require "delegate"
 require "httparty"
 
 require "request/request"
+require "scryfall/version"
 require "scryfall/configuration"
 require "scryfall/errors"
 require "scryfall/client"

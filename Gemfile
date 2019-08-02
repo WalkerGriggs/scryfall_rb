@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 
-gem 'rspec', '3.8.0'
+# Specify your gem's dependencies in scryfall.gemspec
+gemspec

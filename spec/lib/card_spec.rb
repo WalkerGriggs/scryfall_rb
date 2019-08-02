@@ -60,18 +60,18 @@ describe Scryfall::Card do
 
   end
 
-  describe "by_id" do
+  describe "id" do
     let(:card_id) { "79fe9e5e-3ddc-4b15-81d5-9659cd087649" }
     let(:fake_id) { "abc" }
 
     it "returns a Card object" do
-      card = Scryfall::Card.by_id(card_id)
+      card = Scryfall::Card.id(card_id)
       expect(card).to be_a Scryfall::Card
     end
 
     it "should raise an Error when the ID doesn't exist" do
       expect {
-        Scryfall::Card.by_id(:fake_id)
+        Scryfall::Card.id(:fake_id)
       }.to raise_error Scryfall::NotFoundError
     end
   end
