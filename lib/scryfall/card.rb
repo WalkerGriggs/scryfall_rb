@@ -133,7 +133,7 @@ module Scryfall
       #
       # @param id [String] ID of the card to retrieve
       # @return [Scryfall::Card] the card
-      def by_id(id)
+      def id(id)
         req = Request.new(params = nil,
                           headers = nil,
                           body = nil)

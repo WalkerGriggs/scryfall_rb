@@ -8,6 +8,7 @@ require "scryfall/client"
 require "scryfall/connection"
 require "scryfall/card"
 require "scryfall/catalog"
+require "scryfall/set"
 require "scryfall/list"
 
 module Scryfall
