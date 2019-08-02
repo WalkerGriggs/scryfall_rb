@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["walkergriggs"]
   spec.email         = ["walker@walkergriggs.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "github.com/walkergriggs/scryfall_rb"
+  spec.summary       = %q{A lightweight Ruby client for the Scryfall API.}
+  spec.homepage      = "https://github.com/walkergriggs/scryfall_rb"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -19,8 +18,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "github.com/walkergriggs/scryfall_rb"
-    spec.metadata["changelog_uri"] = "github.com/walkergriggs/CHANGELOG.md"
+    spec.metadata["source_code_uri"] = "https://github.com/walkergriggs/scryfall_rb"
+    spec.metadata["changelog_uri"] = "https://github.com/walkergriggs/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
