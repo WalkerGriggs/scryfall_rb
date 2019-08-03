@@ -1,5 +1,7 @@
 <img alt="# scryfall_rb" src="./assets/scryfall_rb.png" width="50%">
 
+[![Gem Version](https://badge.fury.io/rb/scryfall_rb.svg)](https://badge.fury.io/rb/scryfall_rb) [![Maintainability](https://api.codeclimate.com/v1/badges/b3baf506b036729b7c28/maintainability)](https://codeclimate.com/github/WalkerGriggs/scryfall_rb/maintainability)
+
 scryfall_rb is an open source Ruby client library for [Scryfall's](https://scryfall.com/) [API](https://scryfall.com/docs/api) 
 
 Features
